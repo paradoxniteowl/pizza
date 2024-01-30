@@ -6,7 +6,7 @@ class Order:
         self.quantity = quantity
         self.size = size
         self.type = type
-        self.price = price
+        self.price = price[1:]
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -23,9 +23,9 @@ def start():
         size = pizza_menu.iloc[selection][1]
         ptype = pizza_menu.iloc[selection][0]
         price = pizza_menu.iloc[selection][2]
-        quantity = int(input(f"How many {size} {ptype} pizzas do you want to order?"))
+        quantity = int(input(f"How many {size} {ptype} pizzas do you want to order? "))
         order.append(Order(quantity, size, ptype, price))
-        print("Would you like to order another pizza type? (y/n) ")
+        print("Would you like to order another pizza type? (y/n)")
         confirm = input(">> ")
         if confirm.lower() == "y":
             continue

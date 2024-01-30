@@ -5,6 +5,7 @@ Author: Collin Poynor
 """
 
 import order, checkout, inventory
+from os import system
 
 customer_order = []
 while True:
@@ -12,8 +13,7 @@ while True:
     print("Select an option below:")
     print("1. Order")
     print("2. Checkout")
-    print("3. Inventory")
-    print("4. Exit")
+    print("3. Exit")
 
     selection = input(">> ")
     if selection == "1":
@@ -24,9 +24,10 @@ while True:
         else:
             print("The cart is empty.")
     elif selection == "3":
-        inventory.start()
-    elif selection == "4":
         print("Goodbye")
         break
     else:
         print("Invalid option; please enter a correct number")
+        input("Press ENTER to continue")
+
+system("cls")
