@@ -14,7 +14,6 @@ while True:
     print("1. Order")
     print("2. Checkout")
     print("3. Exit")
-
     selection = input(">> ")
     if selection == "1":
         customer_order = order.start()

@@ -13,9 +13,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 def start():
     order = []
     while True:
-        print("Which pizza would you like to order?")
         pizza_menu = pandas.read_csv("data/types.csv")
         print(pizza_menu[["Type", "Size", "Price"]])
+        print("Which pizza would you like to order?")
         selection = int(input(">> "))
         if selection > len(pizza_menu) - 1:
             print("This is not a valid pizza choice.")
@@ -35,5 +35,4 @@ def start():
     for i in order:
         print(i.quantity, i.size, i.type, i.price)
 
-    if selection == "0":
-        order.append([0])
+    return order

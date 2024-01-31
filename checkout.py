@@ -4,14 +4,19 @@ def start(order):
     print("Customer order: ")
     for i in order:
         print(i.quantity, i.size, i.type, i.price)
-        subtotal += i.quantity * i.price
-    subtotal = round(subtotal, 2)
+        subtotal =+ (i.quantity * i.price)
+        subtotal = round(subtotal, 2)
+
     tax = round(subtotal * tax_rate, 2)
     total = round(subtotal + tax, 2)
+
     print("Subtotal: $" + str(subtotal))
     print("Tax: $" + str(tax))
     print("Total: $" + str(round(tax + subtotal, 2)))
+
     payment(total)
+    save(order, total)
+
     input("Press ENTER to continue")
     #get total price
     #add tax
@@ -35,3 +40,11 @@ def payment(total):
             break
         else:
             print("Please enter cash or credit only")
+
+def save(order, total):
+    with open("pizza.dat", "a") as orders:
+        for pizza in order:
+            orders.write(f"{pizza.quantity}, {pizza.type}, {pizza.size}, {pizza.price}, ")
+            orders.write(f"{total}")
+            orders.write(", ")
+        orders.write("\n")
